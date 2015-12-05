@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView 
+        style="@style/TitleStyle"
+        android:text="主要功能"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textSize="18sp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:text="王正银专属手机卫士，为自己的手机保驾护航，啦啦啦啦啦啦啦啦啦" 
+        />
+    <GridView 
+        android:id="@+id/gv_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+       android:numColumns="3"
+       android:verticalSpacing="20dp"
+        ></GridView>
+
+</LinearLayout>
