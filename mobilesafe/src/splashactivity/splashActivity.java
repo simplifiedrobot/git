@@ -18,6 +18,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -27,6 +28,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,6 +80,8 @@ public class splashActivity extends Activity {
 			}
 	    };
     };
+	private SharedPreferences mPref;
+	private RelativeLayout rl_root;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +90,18 @@ public class splashActivity extends Activity {
 		et = (TextView) findViewById(R.id.tv);
 		te_progress = (TextView) findViewById(R.id.textView1);
 		et.setText("版本号"+getVersonName());
-		checkVersoin();
+		rl_root = (RelativeLayout) findViewById(R.id.rl_root);
+		mPref = getSharedPreferences("config", MODE_PRIVATE);
+		boolean b = mPref.getBoolean("auto_update", true);
+		if(b){
+			checkVersoin();
+		}else{
+			mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2000);//延迟2秒发送消息
+		}
+	AlphaAnimation anim=new AlphaAnimation(0.3f, 1f);
+	anim.setDuration(2000);
+	rl_root.startAnimation(anim);
+	
 	}
 
 	public String getVersonName(){//得到版本名和号
