@@ -158,7 +158,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:desc_off
+          @attr name com.example.mobilesafe:desc_off
         */
         public static final int settingItemView_desc_off = 2;
         /**
@@ -172,7 +172,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:desc_on
+          @attr name com.example.mobilesafe:desc_on
         */
         public static final int settingItemView_desc_on = 1;
         /**
@@ -186,7 +186,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:title
+          @attr name com.example.mobilesafe:title
         */
         public static final int settingItemView_title = 0;
     };
