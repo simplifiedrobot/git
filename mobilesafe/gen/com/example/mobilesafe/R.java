@@ -51,47 +51,59 @@ containing a value of this type.
         public static final int anquanweishi=0x7f020000;
         public static final int btn_green_normal=0x7f020001;
         public static final int btn_green_pressed=0x7f020002;
-        public static final int function_greenbutton_normal=0x7f020003;
-        public static final int function_greenbutton_pressed=0x7f020004;
-        public static final int home_apps=0x7f020005;
-        public static final int home_callmsgsafe=0x7f020006;
-        public static final int home_netmanager=0x7f020007;
-        public static final int home_safe=0x7f020008;
-        public static final int home_settings=0x7f020009;
-        public static final int home_sysoptimize=0x7f02000a;
-        public static final int home_taskmanager=0x7f02000b;
-        public static final int home_tools=0x7f02000c;
-        public static final int home_trojan=0x7f02000d;
-        public static final int ic_launcher=0x7f02000e;
-        public static final int listview_divider=0x7f02000f;
-        public static final int lock=0x7f020010;
-        public static final int next=0x7f020011;
-        public static final int previous=0x7f020012;
-        public static final int setup1=0x7f020013;
-        public static final int setup2=0x7f020014;
-        public static final int setup3=0x7f020015;
-        public static final int unlock=0x7f020016;
+        public static final int btn_light_green_selector=0x7f020003;
+        public static final int function_greenbutton_normal=0x7f020004;
+        public static final int function_greenbutton_pressed=0x7f020005;
+        public static final int home_apps=0x7f020006;
+        public static final int home_callmsgsafe=0x7f020007;
+        public static final int home_netmanager=0x7f020008;
+        public static final int home_safe=0x7f020009;
+        public static final int home_settings=0x7f02000a;
+        public static final int home_sysoptimize=0x7f02000b;
+        public static final int home_taskmanager=0x7f02000c;
+        public static final int home_tools=0x7f02000d;
+        public static final int home_trojan=0x7f02000e;
+        public static final int ic_launcher=0x7f02000f;
+        public static final int listview_divider=0x7f020010;
+        public static final int lock=0x7f020011;
+        public static final int next=0x7f020012;
+        public static final int previous=0x7f020013;
+        public static final int setup1=0x7f020014;
+        public static final int setup2=0x7f020015;
+        public static final int setup3=0x7f020016;
+        public static final int unlock=0x7f020017;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000b;
-        public static final int cb_status=0x7f09000a;
+        public static final int action_settings=0x7f090013;
+        public static final int bt_cancle=0x7f09000d;
+        public static final int bt_ok=0x7f09000c;
+        public static final int button3=0x7f090008;
+        public static final int button4=0x7f090009;
+        public static final int cb_status=0x7f090012;
+        public static final int et_pass=0x7f09000a;
+        public static final int et_pass1=0x7f090007;
+        public static final int et_passconfirm=0x7f09000b;
         public static final int gv_home=0x7f090000;
-        public static final int iv_item=0x7f090006;
+        public static final int imageView1=0x7f090006;
+        public static final int iv_item=0x7f09000e;
         public static final int progressBar1=0x7f090004;
         public static final int rl_root=0x7f090002;
         public static final int siv_update=0x7f090001;
         public static final int textView1=0x7f090005;
         public static final int tv=0x7f090003;
-        public static final int tv_desc=0x7f090009;
-        public static final int tv_item=0x7f090007;
-        public static final int tv_title=0x7f090008;
+        public static final int tv_desc=0x7f090011;
+        public static final int tv_item=0x7f09000f;
+        public static final int tv_title=0x7f090010;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
         public static final int activity_setting=0x7f030001;
         public static final int activity_splash=0x7f030002;
-        public static final int home_list_item=0x7f030003;
-        public static final int list_item=0x7f030004;
+        public static final int activity_step1=0x7f030003;
+        public static final int dailog_input_password=0x7f030004;
+        public static final int dailog_set_password=0x7f030005;
+        public static final int home_list_item=0x7f030006;
+        public static final int list_item=0x7f030007;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -128,6 +140,8 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int ContentStyle=0x7f070003;
+        public static final int NextStyle=0x7f070004;
         public static final int TitleStyle=0x7f070002;
     }
     public static final class styleable {
