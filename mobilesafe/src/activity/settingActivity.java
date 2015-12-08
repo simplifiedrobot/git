@@ -15,16 +15,13 @@ public class settingActivity extends Activity {
          
 	private SharedPreferences mPref;
 	private settingItemView sivUpdate;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
 		mPref= getSharedPreferences("config", MODE_PRIVATE);
-		
 		sivUpdate = (settingItemView) findViewById(R.id.siv_update);
-		
 		boolean siv=mPref.getBoolean("auto_update", true);
 		//找到以前的设置
 		if(siv){
@@ -36,6 +33,7 @@ public class settingActivity extends Activity {
 		sivUpdate.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				
 	        //判断当前的勾选状态 ,当前要是勾选，则变为不勾选
 				if(sivUpdate.isChecked()){
 					sivUpdate.setChecked(false);

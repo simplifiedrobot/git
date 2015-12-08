@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#aaa"
     android:orientation="vertical" >
     <TextView 
         style="@style/TitleStyle"
@@ -28,7 +29,7 @@
                   android:padding="10dp"
                 android:layout_centerVertical="true"
             android:text="安全号码" />
- /</RelativeLayout>
+      </RelativeLayout>
     <RelativeLayout
           android:layout_width="match_parent"
         android:layout_height="wrap_content" 
@@ -69,6 +70,55 @@
             android:src="@drawable/listview_divider"
             />
     </LinearLayout>
-    
+
+     <TextView
+         android:id="@+id/tv_reset"
+             android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+             android:layout_centerVertical="true"
+             android:background="#fff"
+            android:text="重新进入设置向导"/>
+        <TextView
+             android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+             android:layout_centerVertical="true"
+             android:background="#abb"
+            android:text="功能简介"/>
+        <TextView
+             android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+             android:layout_centerVertical="true"
+             android:drawableLeft="@android:drawable/star_big_on"
+            android:text="GPS追踪#*location*#"/>
+            <TextView
+             android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+             android:layout_centerVertical="true"
+             android:drawableLeft="@android:drawable/star_big_on"
+            android:text="播放报警音乐#*alarm*#"/>
+                <TextView
+             android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+             android:layout_centerVertical="true"
+             android:drawableLeft="@android:drawable/star_big_on"
+            android:text="远程删除数据#*wipedata*#"/>
+                    <TextView
+             android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+             android:layout_centerVertical="true"
+             android:drawableLeft="@android:drawable/star_big_on"
+            android:text="远程锁屏#*lockscreen*#"/>
 
 </LinearLayout>

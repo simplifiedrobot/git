@@ -37,7 +37,7 @@ public class settingItemView extends RelativeLayout {
 	//初始化布局
 	public void  initView(){
 		//将自定义好的布局文件设置给当前的SettingItemView
-		View.inflate(getContext(), R.layout.step4_setting, this);//root A view group that will be the parent. 
+		View.inflate(getContext(), R.layout.list_item, this);//root A view group that will be the parent. 
 		tv_title = (TextView) findViewById(R.id.tv_title);    //传入this,RelativeLayout也是viewgroup，表示将 R.layout.list_item
 		tv_desc = (TextView)findViewById(R.id.tv_desc);    //塞给settingItemView
 		cbStatus = (CheckBox) findViewById(R.id.cb_status);
@@ -57,8 +57,10 @@ public class settingItemView extends RelativeLayout {
 		//根据选择的状态，更新文本描述
 		if(check){
 			tv_desc.setText(mDesc_on);
+			System.out.println("选中状态");
 		}else{
 			tv_desc.setText(mDesc_off);
+			System.out.println("没选状态");
 		}
 	}
 }

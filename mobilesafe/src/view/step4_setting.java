@@ -8,7 +8,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.mobilesafe.R;
-
 public class step4_setting extends RelativeLayout {
 	  static final String NAMESPACE="http://schemas.android.com/apk/res/com.example.mobilesafe";
 	private String on_t;
@@ -21,9 +20,7 @@ public class step4_setting extends RelativeLayout {
 		off_t = attrs.getAttributeValue(NAMESPACE, "check_off");
 		initView();
 	}
-
 	private void initView() {
- 
 		View.inflate(getContext(), R.layout.step4_setting, this);
 		button = (CheckBox) findViewById(R.id.checkBox1);
 		text = (TextView) findViewById(R.id.textView1);
@@ -32,14 +29,11 @@ public class step4_setting extends RelativeLayout {
 		return button.isChecked();
 	}
 	public void setChecked(boolean check){
-		if(check){
-			button.setChecked(check);
-		}
+	    button.setChecked(check);
 		if(check){
 			text.setText(on_t);
 		}else{
 			text.setText(off_t);
 		}
 	}
-
 }

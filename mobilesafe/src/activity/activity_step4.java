@@ -1,9 +1,11 @@
 package activity;
 
 
+import view.settingItemView;
 import view.step4_setting;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,15 +21,19 @@ public class activity_step4 extends Activity {
     	// TODO Auto-generated method stub
     	super.onCreate(savedInstanceState);
     	setContentView(R.layout.activity_step4);
-    	s4 = (step4_setting) findViewById(R.id.step4_setting);
-    	s4.setOnClickListener(new OnClickListener() {
+    	final step4_setting  set_v=(step4_setting) findViewById(R.id.step4_setting);
+    	final SharedPreferences mPref=getSharedPreferences("config", MODE_PRIVATE);
+        boolean  step4_check=mPref.getBoolean("step4_check", false);
+    	   set_v.setChecked(step4_check);
+    	   set_v.setOnClickListener(new OnClickListener() {  
 			@Override
 			public void onClick(View v) {
-				boolean check=s4.isChecked();
-		    	s4.setChecked(check);
+				boolean check = set_v.isChecked();
+					set_v.setChecked(!check);
+					mPref.edit().putBoolean("step4_check",(!check)).commit();
+					
 			}
 		});
-    	
     }
     public void next(View v){
     	startActivity(new Intent(this,activity_lost.class));

@@ -7,14 +7,13 @@
     <TextView
         style="@style/TitleStyle"
         android:layout_width="match_parent"
-        android:text="3设置安全号码" />
+        android:text="3.设置安全号码" />
 
        <TextView
         style="@style/ContentStyle"
         android:text="SIM卡变更后" />
     <TextView
         style="@style/ContentStyle"
-        android:drawableLeft="@android:drawable/star_big_on"
         android:layout_gravity="center"
         android:text="报警短信会发送给安全号码" />
     <EditText 
@@ -33,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
          android:orientation="horizontal" 
-        android:layout_gravity="center"
+       android:gravity="center"
        >
         <ImageView 
             android:layout_width="wrap_content"
@@ -61,6 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        
          >
                <ImageView 
                    android:id="@+id/imageView1"
