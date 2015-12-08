@@ -10,6 +10,7 @@ import java.net.URL;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import utils.mToast;
 import utils.streamUtils;
 import activity.homeActivity;
 import android.app.Activity;
@@ -68,7 +69,7 @@ public class splashActivity extends Activity {
 				enterHome();
 				break;
 			case 3:
-				Toast.makeText(splashActivity.this, "ÍøÂç´íÎó",Toast.LENGTH_SHORT).show();
+				mToast.show(splashActivity.this, "ÍøÂç´íÎó");
 				enterHome();
 				break;
 			case 4:

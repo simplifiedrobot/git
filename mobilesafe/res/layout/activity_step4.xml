@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zdy="http://schemas.android.com/apk/res/com.example.mobilesafe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView
+        style="@style/TitleStyle"
+        android:layout_width="match_parent"
+        android:text="4.恭喜您，设置完成" />
+      <view.step4_setting
+         android:id="@+id/step4_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+          zdy:check_on="您已开启防盗保护"
+          zdy:check_off="您未开启防盗保护"
+          />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:orientation="horizontal" 
+        android:layout_gravity="center"
+       >
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"
+            />
+         <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+     android:src="@android:drawable/presence_invisible"
+            />
+            <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          android:src="@android:drawable/presence_invisible"
+            />
+               <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_online"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+         >
+               <ImageView 
+                   android:id="@+id/imageView1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerHorizontal="true"
+                   android:layout_centerVertical="true"
+                   android:src="@drawable/setup3"
+                   />
+               <Button 
+                   style="@style/NextStyle"
+                   />
+               <Button 
+                   style="@style/PreviousStyle"
+                   />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -26,7 +26,11 @@
         </activity>
         <activity  android:name="activity.homeActivity"></activity>
         <activity android:name="activity.settingActivity"></activity>
-        <activity android:name="activity_step1"></activity>
+        <activity android:name="activity.activity_step1"></activity>
+        <activity android:name="activity.activity_step2"></activity>
+        <activity android:name="activity.activity_step3"></activity>
+        <activity android:name="activity.activity_step4"></activity>
+         <activity android:name="activity.activity_lost"></activity>
     </application>
       
 </manifest>

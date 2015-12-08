@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/TitleStyle"
+        android:layout_width="match_parent"
+        android:text="3设置安全号码" />
+
+       <TextView
+        style="@style/ContentStyle"
+        android:text="SIM卡变更后" />
+    <TextView
+        style="@style/ContentStyle"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:layout_gravity="center"
+        android:text="报警短信会发送给安全号码" />
+    <EditText 
+        android:id="@+id/safeNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <Button 
+        android:id="@+id/bt_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff99cc00"
+        android:text="选择联系人"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:orientation="horizontal" 
+        android:layout_gravity="center"
+       >
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"
+            />
+         <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+     android:src="@android:drawable/presence_invisible"
+            />
+            <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          android:src="@android:drawable/presence_online"
+            />
+               <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+         >
+               <ImageView 
+                   android:id="@+id/imageView1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerHorizontal="true"
+                   android:layout_centerVertical="true"
+                   android:src="@drawable/setup3"
+                   />
+               <Button 
+                   style="@style/NextStyle"
+                   />
+               <Button 
+                   style="@style/PreviousStyle"/>
+    </RelativeLayout>
+
+</LinearLayout>
