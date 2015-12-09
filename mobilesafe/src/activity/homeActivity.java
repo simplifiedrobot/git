@@ -138,7 +138,7 @@ public class homeActivity extends Activity {
 					password = mPref.getString("password", null);
 					if(password.equals(MD5Utils.encode(in_pass))){
 						dialog2.dismiss();
-						startActivity(new Intent(homeActivity.this, activity_step1.class));
+						startActivity(new Intent(homeActivity.this, activity_lost.class));
 					}else{
 						mToast.show(homeActivity.this,"√‹¬Î¥ÌŒÛ");
 					}

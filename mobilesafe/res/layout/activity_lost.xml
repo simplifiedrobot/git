@@ -22,6 +22,7 @@
             android:text="安全号码"
             />
         <TextView
+            android:id="@+id/safe_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -54,10 +55,10 @@
             android:text="安全号码"
             />
         <ImageView 
+            android:id="@+id/iv_lock"
            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@drawable/lock"
             />
     /</RelativeLayout>
      <LinearLayout 
@@ -71,15 +72,17 @@
             />
     </LinearLayout>
 
-     <TextView
-         android:id="@+id/tv_reset"
+     <Button
+         android:id="@+id/tv_reEnter"
              android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
              android:layout_centerVertical="true"
              android:background="#fff"
-            android:text="重新进入设置向导"/>
+            android:text="重新进入设置向导"
+            android:onClick="reEnter"
+            />
         <TextView
              android:layout_margin="10dp"
             android:layout_width="match_parent"

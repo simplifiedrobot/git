@@ -9,6 +9,7 @@
         android:targetSdkVersion="17" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
@@ -31,6 +32,10 @@
         <activity android:name="activity.activity_step3"></activity>
         <activity android:name="activity.activity_step4"></activity>
          <activity android:name="activity.activity_lost"></activity>
+          <activity android:name="activity.activity_contact"></activity>
+          <receiver android:name="receiver.bootCompelteReceiver"></receiver>
+             <receiver android:name="receiver.smsReciver" ><intent-filter 
+                 android:priority="1000"></intent-filter></receiver>
     </application>
       
 </manifest>
