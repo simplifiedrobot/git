@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 
 import com.example.mobilesafe.R;
 
-public class activity_step2 extends Activity {
+public class activity_step2 extends BaseSetupActivity {
     private String simSerialNum;
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,6 @@ public class activity_step2 extends Activity {
     	setContentView(R.layout.activity_step2);
     	
     	final settingItemView  set_v=(settingItemView) findViewById(R.id.siv_update);
-    	final SharedPreferences mPref=getSharedPreferences("config", MODE_PRIVATE);
         simSerialNum = mPref.getString("simSerialNum", "");
         if(TextUtils.isEmpty(simSerialNum)){
         	set_v.setChecked(false);
@@ -45,16 +44,19 @@ public class activity_step2 extends Activity {
 			}
 		});
     }
-    public void next(View v){
-    	startActivity(new Intent(this,activity_step3.class));
+	@Override
+	public void showNextPage() {
+		startActivity(new Intent(this,activity_step3.class));
     	finish();
     	//两个界面切换的动画
     	overridePendingTransition(R.anim.tran_in, R.anim.tran_out);
-    }
-    public void previous(View v){
-    	startActivity(new Intent(this,activity_step1.class));
+	}
+	@Override
+	public void showPreviousPage() {
+	   	startActivity(new Intent(this,activity_step1.class));
     	finish();
     	//两个界面切换的动画
     	overridePendingTransition(R.anim.tran_pre_in, R.anim.tran_pre_out);
-    }
+		
+	}
 }

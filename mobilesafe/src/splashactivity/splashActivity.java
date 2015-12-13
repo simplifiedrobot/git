@@ -1,8 +1,11 @@
 package splashactivity;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -91,6 +94,7 @@ public class splashActivity extends Activity {
 		et = (TextView) findViewById(R.id.tv);
 		te_progress = (TextView) findViewById(R.id.textView1);
 		et.setText("版本号"+getVersonName());
+		copyDB("address.db");
 		rl_root = (RelativeLayout) findViewById(R.id.rl_root);
 		mPref = getSharedPreferences("config", MODE_PRIVATE);
 		boolean b = mPref.getBoolean("auto_update", true);
@@ -103,6 +107,37 @@ public class splashActivity extends Activity {
 	anim.setDuration(2000);
 	rl_root.startAnimation(anim);
 	
+	}
+
+	private void copyDB(String dbName) {
+		File  destFile=new File(getFilesDir(), dbName);
+		if(destFile.exists()){
+			System.out.println("数据库已存在");
+			return;
+		}else{
+			System.out.println("复制数据库");
+			InputStream in=null;
+			FileOutputStream out=null;
+			try {
+				in=getAssets().open(dbName);
+			    out =new FileOutputStream(destFile);
+			    byte [] b=new byte[1024];
+			    int len=0;
+			    while((len=in.read(b))!=-1){
+			    	out.write(b, 0, len);
+			    }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				try {
+					in.close();
+					out.close();
+					System.out.println("复制数据库成功");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	public String getVersonName(){//得到版本名和号

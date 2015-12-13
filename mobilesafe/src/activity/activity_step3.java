@@ -1,7 +1,7 @@
 package activity;
 
-
 import utils.mToast;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,23 +11,21 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.mobilesafe.R;
-
-
-public class activity_step3 extends Activity {
+public class activity_step3 extends BaseSetupActivity {
     private String safeNum;
 	private EditText et_safeNum;
-	private SharedPreferences mPref;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
-    	mPref = getSharedPreferences("config", MODE_PRIVATE);
+	  	super.onCreate(savedInstanceState);
+	  	SharedPreferences  	mPref =getSharedPreferences("safeNum", MODE_PRIVATE);
 		safeNum = mPref.getString("safeNum", null);
-    	super.onCreate(savedInstanceState);
     	setContentView(R.layout.activity_step3);
     	et_safeNum = (EditText) findViewById(R.id.safeNum);
+    	safeNum="10086";
     	et_safeNum.setText(safeNum);
     }
-    public void chooseContact(View v){
+  /*  public void chooseContact(View v){
     	Intent intent=new Intent(this,activity_contact.class);
     	startActivityForResult(intent, 0);
     }
@@ -41,9 +39,10 @@ public class activity_step3 extends Activity {
     	    	et_safeNum.setText(phone);
     	}
       	super.onActivityResult(requestCode, resultCode, data);
-    }
-    public void next(View v){
-    	String etPhone=et_safeNum.getText().toString().trim();
+    }*/
+	@Override
+	public void showNextPage() {
+		String etPhone=et_safeNum.getText().toString().trim();
     	if(TextUtils.isEmpty(etPhone)){
     		mToast.show(this, "安全号码不能为空哦，亲");
     		return;
@@ -53,12 +52,13 @@ public class activity_step3 extends Activity {
     	finish();
     	//两个界面切换的动画
     	overridePendingTransition(R.anim.tran_in, R.anim.tran_out);
-    }
-    public void previous(View v){
-    	startActivity(new Intent(this,activity_step2.class));
+	}
+	@Override
+	public void showPreviousPage() {
+		// TODO Auto-generated method stub  	startActivity(new Intent(this,activity_step2.class));
     	finish();
     	//两个界面切换的动画
-    	overridePendingTransition(R.anim.tran_pre_in, R.anim.tran_pre_out);
-    }
+    	overridePendingTransition(R.anim.tran_pre_in, R.anim.tran_pre_out);		
+	}
     
 }

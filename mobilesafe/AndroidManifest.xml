@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -40,9 +41,12 @@
         <activity android:name="activity.activity_step4"></activity>
          <activity android:name="activity.activity_lost"></activity>
           <activity android:name="activity.activity_contact"></activity>
+             <activity android:name="activity.aToolsActivity"></activity>
+                <activity android:name="activity.activity_address"></activity>
           <receiver android:name="receiver.bootCompelteReceiver"></receiver>
              <receiver android:name="receiver.smsReciver" ><intent-filter 
                  android:priority="1000"></intent-filter></receiver>
+             <service android:name="service.locationservice"></service>
     </application>
       
 </manifest>

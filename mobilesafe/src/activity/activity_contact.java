@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -25,10 +26,15 @@ public class activity_contact extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
          contact = new ArrayList<HashMap<String, String>>();
+         System.out.println("进入contact了");
 		  contact =contact();
+		  System.out.println("拿到了联系人列表");
           super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contact);
+		System.out.println("填充了联系试图 ");
+	
 	ListView listView=	(ListView) findViewById(R.id.listView);
+
 	listView.setAdapter(new SimpleAdapter(this, contact, R.layout.contact_list,new String[]{"name","phone"}, new int[]{R.id.tv_name,R.id.tv_phone}));
 	listView.setOnItemClickListener(new OnItemClickListener() {
 		
@@ -44,26 +50,28 @@ public class activity_contact extends Activity {
 			finish();
 		}
 	});
-
 	}
-
 	private ArrayList<HashMap<String, String>> contact() {
 		// 首先,从raw_contacts中读取联系人的id("contact_id")
 		// 其次, 根据contact_id从data表中查询出相应的电话号码和联系人名称
 		// 然后,根据mimetype来区分哪个是联系人,哪个是电话号码
+		                                                         System.out.println(" 进入联系人数据库获取方法");
 		Uri rawContactsUri=Uri.parse("content://com.android.contacts/raw_contacts");
 		Uri dataUri = Uri.parse("content://com.android.contacts/data");
 		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 		//从raw_contacts中读取联系人的id("contact_id")
+		                                                       System.out.println("从raw_contacts中读取联系人的id_contact_id");
 		Cursor rawContactsCursor=getContentResolver().query(rawContactsUri,
 			new String[]{"contact_id"}, null, null, null);
+		                                                        System.out.println("拿到contact——id游标");
 		if(rawContactsCursor!=null){
-			String contactId=rawContactsCursor.getString(0);
 			while(rawContactsCursor.moveToNext()){
+				String contactId=rawContactsCursor.getString(0);
 				//根据contact_id从data表中查询出相应的电话号码和联系人的名字，实际上查询的是试图view_data
 				Cursor dataCursor=getContentResolver().query(dataUri,
 						new String[]{"date1","mimetype"},"contact_id=?",
 						new String[]{contactId}, null);
+				                                                    System.out.println("拿到姓名和号码游标");
 				if(dataCursor!=null){
 					 HashMap<String,String> map=new HashMap<String, String>();
 					 while(dataCursor.moveToNext()){
@@ -77,6 +85,7 @@ public class activity_contact extends Activity {
 					     }
 				}
 				list.add(map);
+				System.out.println("添加至链表");
 				dataCursor.close();
 			}
 		}
