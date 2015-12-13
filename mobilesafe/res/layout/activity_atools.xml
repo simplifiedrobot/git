@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:zdy="http://schemas.android.com/apk/res/com.example.mobilesafe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -9,7 +10,7 @@
         android:text="高级工具" />
     
     <TextView
-        android:id="@+id/tv_adress"
+        android:id="@+id/tv_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -21,6 +22,11 @@
         android:onClick="numberAddress"
         android:textSize="20sp"
         android:text="归属地查询" />
+    
+ 
+      
+
+      
 
 
 

@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
 
     <application
         android:allowBackup="true"
@@ -47,6 +48,7 @@
              <receiver android:name="receiver.smsReciver" ><intent-filter 
                  android:priority="1000"></intent-filter></receiver>
              <service android:name="service.locationservice"></service>
+             <service android:name="service.addressService"></service>
     </application>
       
 </manifest>

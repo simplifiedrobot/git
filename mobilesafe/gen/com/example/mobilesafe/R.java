@@ -115,26 +115,26 @@ containing a value of this type.
         public static final int et_pass=0x7f0b0017;
         public static final int et_pass1=0x7f0b0014;
         public static final int et_passconfirm=0x7f0b0018;
-        public static final int gv_home=0x7f0b0005;
+        public static final int gv_home=0x7f0b0004;
         public static final int imageView1=0x7f0b000e;
         public static final int iv_item=0x7f0b001b;
-        public static final int iv_lock=0x7f0b0007;
-        public static final int listView=0x7f0b0004;
+        public static final int iv_lock=0x7f0b0006;
+        public static final int listView=0x7f0b0003;
         public static final int progressBar1=0x7f0b000c;
         public static final int rl_root=0x7f0b000a;
         public static final int safeNum=0x7f0b000f;
-        public static final int safe_phone=0x7f0b0006;
-        public static final int siv_update=0x7f0b0009;
+        public static final int safe_phone=0x7f0b0005;
+        public static final int siv_address=0x7f0b0009;
+        public static final int siv_update=0x7f0b0008;
         public static final int step4_setting=0x7f0b0011;
         public static final int textView1=0x7f0b000d;
         public static final int tv=0x7f0b000b;
         public static final int tv_address=0x7f0b0002;
-        public static final int tv_adress=0x7f0b0003;
         public static final int tv_desc=0x7f0b001e;
         public static final int tv_item=0x7f0b001c;
         public static final int tv_name=0x7f0b0012;
         public static final int tv_phone=0x7f0b0013;
-        public static final int tv_reEnter=0x7f0b0008;
+        public static final int tv_reEnter=0x7f0b0007;
         public static final int tv_title=0x7f0b001d;
     }
     public static final class layout {
