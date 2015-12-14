@@ -32,5 +32,10 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
     />
+  <view.settingclickView
+      android:id="@+id/siv_ad_location"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+    />
 
 </LinearLayout>

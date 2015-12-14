@@ -31,8 +31,21 @@ public class settingActivity extends Activity {
 		initUpdate() ;
 		initAddress();
 		initAddressStyle();
+		initAddressLocation();
 	}
 	
+	private void initAddressLocation() {
+		settingclickView siv_ad_location=(settingclickView) findViewById(R.id.siv_ad_location);
+		siv_ad_location.setTitle("更改归属地显示的位置");
+		siv_ad_location.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+            startActivity(new Intent(settingActivity.this,activity_drag.class));				
+			}
+		});
+	}
+
 	private void initUpdate() {
 		sivUpdate = (settingItemView) findViewById(R.id.siv_update);
 		boolean siv=mPref.getBoolean("auto_update", true);

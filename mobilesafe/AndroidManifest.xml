@@ -44,6 +44,7 @@
           <activity android:name="activity.activity_contact"></activity>
              <activity android:name="activity.aToolsActivity"></activity>
                 <activity android:name="activity.activity_address"></activity>
+                 <activity android:name="activity.activity_drag"></activity>
           <receiver android:name="receiver.bootCompelteReceiver"></receiver>
              <receiver android:name="receiver.smsReciver" ><intent-filter 
                  android:priority="1000"></intent-filter></receiver>
