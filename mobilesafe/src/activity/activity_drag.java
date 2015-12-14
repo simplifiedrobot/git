@@ -50,15 +50,15 @@ public class activity_drag extends Activity{
 					break;
 				case MotionEvent.ACTION_MOVE:
 					int endX=(int) event.getRawX();
-					int endY=(int) event.getRawY();
+					int endY=(int) event.getRawY();	
 					//计算移动偏移量
 	                  int dx=endX-startX;
 	                  int dy=endY-startY;
                     //更新上下左右距离
-	                  int l=iv_drag.getLeft();
-	                  int r=iv_drag.getRight();
-	                  int t=iv_drag.getTop();
-	                  int b=iv_drag.getBottom();
+	                  int l=iv_drag.getLeft()+dx;
+	                  int r=iv_drag.getRight()+dx;
+	                  int t=iv_drag.getTop()+dy;
+	                  int b=iv_drag.getBottom()+dy;
 	                  //更新界面
 	                  iv_drag.layout(l, t, r, b);
                       //重新初始化起点坐标
