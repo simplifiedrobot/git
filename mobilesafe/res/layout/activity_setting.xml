@@ -27,5 +27,10 @@
         zdy:desc_on="来电归属显示已开启"
         zdy:title="来电归属显示"
     />
+ <view.settingclickView
+      android:id="@+id/siv_addressStyle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+    />
 
 </LinearLayout>

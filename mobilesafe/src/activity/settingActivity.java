@@ -5,8 +5,10 @@ package activity;
 import service.addressService;
 import utils.ServiceUtils;
 import view.settingItemView;
+import view.settingclickView;
 import android.app.Activity;
-import android.app.Service;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,10 +25,12 @@ public class settingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		System.out.println("填充settingView");
 		setContentView(R.layout.activity_setting);
 		mPref= getSharedPreferences("config", MODE_PRIVATE);
 		initUpdate() ;
 		initAddress();
+		initAddressStyle();
 	}
 	
 	private void initUpdate() {
@@ -55,10 +59,9 @@ public class settingActivity extends Activity {
 		
 	}
 	private void initAddress() {
-		
 		 siv_address = (settingItemView) findViewById(R.id.siv_address);
 		final boolean serviceRunning=ServiceUtils.isServiceRunning(settingActivity
-				.this, "com.example.mobilesafe.service.addressService");
+				.this, "service.addressService");
 		if(serviceRunning){
 			siv_address.setChecked(true);
 		}else{
@@ -77,9 +80,39 @@ public class settingActivity extends Activity {
 						siv_address.setChecked(true);
 						startService(new Intent(settingActivity.this, addressService.class));//开启归属地服务
 					}
-					
 				}
-	
 	    	});
 }
+	final String[] items = new String[] { "半透明", "活力橙", "卫士蓝", "金属灰", "苹果绿" };
+	private int styleItem;
+	private settingclickView siv_style;
+	
+	public void  initAddressStyle(){
+		System.out.println("拿到clickView");
+		siv_style = (settingclickView) findViewById(R.id.siv_addressStyle);
+		System.out.println("拿到clickView成功");
+		siv_style.setTitle("归属地提示框风格");
+	    styleItem = mPref.getInt("style", 0);
+	    siv_style.setDesc(items[styleItem]);
+		siv_style.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showSingleChooseDailog();
+			}
+		});
+	}
+	protected void showSingleChooseDailog() {
+		AlertDialog.Builder  builder=new AlertDialog.Builder(settingActivity.this);
+		builder.setTitle("悬浮窗样式选择");
+		builder.setSingleChoiceItems(items, styleItem, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				mPref.edit().putInt("style", which).commit();
+				dialog.dismiss();
+				siv_style.setDesc(items[which]);
+			}
+		});
+		builder.setNegativeButton("取消", null);
+		builder.show();
+	}
 }

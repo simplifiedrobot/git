@@ -1,13 +1,15 @@
 package service;
 
 import receiver.outCallReceiver;
-import utils.mToast;
+import utils.dao_addressToast;
 import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.view.View;
 import dao.dao_adress;
 
 public class addressService extends Service {
@@ -15,6 +17,9 @@ public class addressService extends Service {
 	private outCallReceiver receiver;
 	private myListener listener;
 	private TelephonyManager tm;
+	private View view;
+	private SharedPreferences mPref;
+	
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
@@ -43,10 +48,11 @@ public class addressService extends Service {
 			case TelephonyManager.CALL_STATE_RINGING:
 				System.out.println("电话铃响");
 				String  address=dao_adress.query(incomingNumber);
-				mToast.show( addressService.this, address);
+				dao_addressToast.showToast(addressService.this, address);
 				break;
 			case TelephonyManager.CALL_STATE_IDLE:
 				System.out.println("无电话");
+				
 				break;
 			default:
 				break;
@@ -59,6 +65,8 @@ public class addressService extends Service {
 		tm.listen(listener, PhoneStateListener.LISTEN_NONE);//停止来电监听
 		unregisterReceiver(receiver);//注销广播
 	}
-	
+			
+
+
 
 }
