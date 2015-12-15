@@ -36,7 +36,8 @@ public class settingActivity extends Activity {
 	
 	private void initAddressLocation() {
 		settingclickView siv_ad_location=(settingclickView) findViewById(R.id.siv_ad_location);
-		siv_ad_location.setTitle("更改归属地显示的位置");
+		siv_ad_location.setTitle("归属地悬浮窗显示位置");
+		siv_ad_location.setDesc("更改归属地悬浮窗显示位置");
 		siv_ad_location.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -105,6 +106,7 @@ public class settingActivity extends Activity {
 		siv_style = (settingclickView) findViewById(R.id.siv_addressStyle);
 		System.out.println("拿到clickView成功");
 		siv_style.setTitle("归属地提示框风格");
+		
 	    styleItem = mPref.getInt("style", 0);
 	    siv_style.setDesc(items[styleItem]);
 		siv_style.setOnClickListener(new OnClickListener() {
@@ -117,6 +119,7 @@ public class settingActivity extends Activity {
 	protected void showSingleChooseDailog() {
 		AlertDialog.Builder  builder=new AlertDialog.Builder(settingActivity.this);
 		builder.setTitle("悬浮窗样式选择");
+		
 		builder.setSingleChoiceItems(items, styleItem, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
