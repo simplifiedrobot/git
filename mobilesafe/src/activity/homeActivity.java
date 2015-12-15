@@ -61,6 +61,9 @@ public class homeActivity extends Activity {
 				case 0://防盗中心
 					showPasswordDialog();
 					break;
+				case 1://防盗中心
+					startActivity(new Intent(homeActivity.this, activity_safeCall.class));
+					break;
 				default:
 					break;
 				}
