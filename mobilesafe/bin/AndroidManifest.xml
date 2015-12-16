@@ -43,15 +43,21 @@
         <activity android:name="activity.activity_step4"></activity>
          <activity android:name="activity.activity_lost"></activity>
           <activity android:name="activity.activity_contact"></activity>
-             <activity android:name="activity.aToolsActivity"></activity>
-                <activity android:name="activity.activity_address"></activity>
-                 <activity android:name="activity.activity_drag"
-                     android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+          <activity android:name="activity.aToolsActivity"></activity>
+        <activity android:name="activity.activity_address"></activity>
+           <activity android:name="activity.activity_safeCall"></activity>
+         <activity android:name="activity.activity_drag"
+             android:theme="@android:style/Theme.Translucent.NoTitleBar">
+         </activity>
+         <uses-library 
+             android:name="android.test.runner"/>
           <receiver android:name="receiver.bootCompelteReceiver"></receiver>
              <receiver android:name="receiver.smsReciver" ><intent-filter 
                  android:priority="1000"></intent-filter></receiver>
              <service android:name="service.locationservice"></service>
              <service android:name="service.addressService"></service>
     </application>
-      
+      <instrumentation android:name="android.test.InstrumentationTestRunner"
+          android:targetPackage="com.example.mobilesafe"
+          android:label="test"></instrumentation>
 </manifest>

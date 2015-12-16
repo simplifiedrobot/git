@@ -52,6 +52,7 @@ public class BlackNumberDao {
 		}
 	//返回一个黑名单号码的拦截模式
 	public String findNumber(String number){
+		
 		SQLiteDatabase db = helper.getWritableDatabase();
 		String mode="";
      	Cursor cursor=	db.query("blacknumber", new String[ ]{"mode"}, "number=?", new String[]{number}, null, null, null);
@@ -67,7 +68,25 @@ public class BlackNumberDao {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		List <blackNumberInfo> numberList=new ArrayList<blackNumberInfo>();
 		Cursor cursor=db.query("blacknumber", new String[]{"number","mode"}, null, null, null, null, null);
-	    if(cursor.moveToNext()){
+	    while(cursor.moveToNext()){
+	    	blackNumberInfo numberInfo = new blackNumberInfo();
+	    	numberInfo.setNumber(cursor.getString(0));
+	    	numberInfo.setMode(cursor.getString(1));
+	    	numberList.add(numberInfo);
+	    }
+		
+	   cursor.close();
+	   db.close();
+	   return numberList;
+	}
+	
+	//分页加载数据
+	public List<blackNumberInfo> findParNumber(int PageSize,int page){
+		SQLiteDatabase db = helper.getWritableDatabase();
+		List <blackNumberInfo> numberList=new ArrayList<blackNumberInfo>();
+		Cursor cursor=db.rawQuery("select number,mode from blacknumber limit ? offset ?",
+				new String[]{ String.valueOf(PageSize),String.valueOf(page*PageSize)});
+	    while(cursor.moveToNext()){
 	    	blackNumberInfo numberInfo = new blackNumberInfo();
 	    	numberInfo.setNumber(cursor.getString(0));
 	    	numberInfo.setMode(cursor.getString(1));
@@ -77,4 +96,22 @@ public class BlackNumberDao {
 	   db.close();
 	   return numberList;
 	}
+	
+	//分批加载数据
+	public List<blackNumberInfo> findParNumber2(int startIndex,int maxCount){
+		SQLiteDatabase db = helper.getWritableDatabase();
+		List <blackNumberInfo> numberList=new ArrayList<blackNumberInfo>();
+		Cursor cursor=db.rawQuery("select number,mode from blacknumber limit ? offset ?",
+				new String[]{ String.valueOf(maxCount),String.valueOf(startIndex)});
+	    while(cursor.moveToNext()){
+	    	blackNumberInfo numberInfo = new blackNumberInfo();
+	    	numberInfo.setNumber(cursor.getString(0));
+	    	numberInfo.setMode(cursor.getString(1));
+	    	numberList.add(numberInfo);
+	    }
+	   cursor.close();
+	   db.close();
+	   return numberList;
+	}
+	
 }
