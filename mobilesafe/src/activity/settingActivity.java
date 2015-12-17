@@ -3,6 +3,7 @@ package activity;
 
 
 import service.addressService;
+import service.safecall;
 import utils.ServiceUtils;
 import view.settingItemView;
 import view.settingclickView;
@@ -21,6 +22,8 @@ public class settingActivity extends Activity {
 	private settingItemView siv_address;
 	private SharedPreferences mPref;
 	private settingItemView sivUpdate;
+	private settingItemView siv_safecall;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -32,6 +35,7 @@ public class settingActivity extends Activity {
 		initAddress();
 		initAddressStyle();
 		initAddressLocation();
+		initSafeCall();
 	}
 	
 	private void initAddressLocation() {
@@ -67,6 +71,34 @@ public class settingActivity extends Activity {
 				}else{
 					sivUpdate.setChecked(true);
 					mPref.edit().putBoolean("auto_update", true).commit();
+				}
+			}
+		});
+		
+	}
+	
+	private void initSafeCall() {
+		siv_safecall= (settingItemView) findViewById(R.id.siv_safecall);
+		boolean siv=mPref.getBoolean("siv_safecall", true);
+		//找到以前的设置
+		if(siv){
+			siv_safecall.setChecked(true);
+		}else{
+			siv_safecall.setChecked(false);
+		}
+		//对点击产生反应
+		siv_safecall.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+	        //判断当前的勾选状态 ,当前要是勾选，则变为不勾选
+				if(siv_safecall.isChecked()){
+					siv_safecall.setChecked(false);
+					mPref.edit().putBoolean("siv_safecall", false).commit();
+					stopService(new Intent(settingActivity.this, safecall.class));
+				}else{
+					siv_safecall.setChecked(true);
+					mPref.edit().putBoolean("siv_safecall", true).commit();
+					startService(new Intent(settingActivity.this, safecall.class));
 				}
 			}
 		});

@@ -37,5 +37,14 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
     />
+  <view.settingItemView
+      android:id="@+id/siv_safecall"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+       zdy:desc_off="黑名单拦截未开启"
+        zdy:desc_on="黑名单拦截已开启"
+        zdy:title="黑名单拦截"
+    />
+  
 
 </LinearLayout>

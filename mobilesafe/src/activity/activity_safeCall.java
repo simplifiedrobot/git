@@ -39,7 +39,7 @@ public class activity_safeCall extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_safecall);
+		setContentView(R.layout.activity_safecall2);
 		InitDate();
 		InitUI();
 		currentPage = 1;
@@ -65,6 +65,12 @@ public class activity_safeCall extends Activity {
 	public void InitDate() {
 		numberDao = new BlackNumberDao(this);
 		pageSize = 15;
+		int getTotalPage = numberDao.getTotalPage();
+		if (getTotalPage % pageSize == 0) {
+			totalPage = getTotalPage / pageSize;
+		} else {
+			totalPage =(getTotalPage / pageSize)+1;
+		}
 		new Thread() {
 			public void run() {
 				AllNumber = numberDao.findParNumber(pageSize, currentPage);
@@ -100,7 +106,7 @@ public class activity_safeCall extends Activity {
 		String page = et_pageNum.getText().toString();
 		if (!TextUtils.isEmpty(page)) {
 			currentPage = Integer.parseInt(page);
-			if (currentPage <= 1 || currentPage >= totalPage) {
+			if (currentPage < 1 || currentPage > totalPage) {
 				mToast.show(this, "请输入正确的页码");
 				return;
 			} else {
@@ -111,12 +117,7 @@ public class activity_safeCall extends Activity {
 	}
 
 	private void InitUI() {
-		int getTotalPage = numberDao.getTotalPage();
-		if (getTotalPage % pageSize == 0) {
-			totalPage = getTotalPage / pageSize;
-		} else {
-			totalPage = getTotalPage / pageSize + 1;
-		}
+	
 		l_pb = (LinearLayout) findViewById(R.id.pb);
 		l_pb.setVisibility(View.VISIBLE);
 	}
@@ -136,7 +137,6 @@ public class activity_safeCall extends Activity {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			System.out.println("进入适配器");
 			if (convertView == null) {
 				convertView = View.inflate(activity_safeCall.this,
 						R.layout.listview_safecall_layout, null);
@@ -151,7 +151,6 @@ public class activity_safeCall extends Activity {
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			System.out.println("填充成功");
 			holder.tv_blacknum.setText(list.get(position).getNumber());
 			String mode = list.get(position).getMode();
 			switch (Integer.parseInt(mode)) {
@@ -167,7 +166,6 @@ public class activity_safeCall extends Activity {
 			default:
 				break;
 			}
-			System.out.println("填充成功，返回view");
 			final blackNumberInfo blackNum = list.get(position);
 			holder.iv_delete.setOnClickListener(new OnClickListener() {
 				@Override

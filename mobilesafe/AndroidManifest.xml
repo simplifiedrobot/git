@@ -46,6 +46,7 @@
           <activity android:name="activity.aToolsActivity"></activity>
         <activity android:name="activity.activity_address"></activity>
            <activity android:name="activity.activity_safeCall"></activity>
+               <activity android:name="activity.activity_safeCall2"></activity>
          <activity android:name="activity.activity_drag"
              android:theme="@android:style/Theme.Translucent.NoTitleBar">
          </activity>
@@ -56,6 +57,7 @@
                  android:priority="1000"></intent-filter></receiver>
              <service android:name="service.locationservice"></service>
              <service android:name="service.addressService"></service>
+             <service android:name="service.safecall"></service>
     </application>
       <instrumentation android:name="android.test.InstrumentationTestRunner"
           android:targetPackage="com.example.mobilesafe"

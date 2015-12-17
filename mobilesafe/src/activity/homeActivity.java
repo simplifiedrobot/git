@@ -62,7 +62,7 @@ public class homeActivity extends Activity {
 					showPasswordDialog();
 					break;
 				case 1://·ÀµÁÖÐÐÄ
-					startActivity(new Intent(homeActivity.this, activity_safeCall.class));
+					startActivity(new Intent(homeActivity.this, activity_safeCall2.class));
 					break;
 				default:
 					break;

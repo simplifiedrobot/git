@@ -13,7 +13,11 @@ public class BlackNumberDaoTest extends AndroidTestCase {
 			String number=1000000000+i+"";
 			Random random = new Random();
 			dao.add(number, String.valueOf(random.nextInt(3)+1));
-			
 		}
 	}
+	
+	public  void testdeleteAll(){
+		BlackNumberDao dao= new BlackNumberDao(getContext());
+			dao.deleteAll();
+}
 }

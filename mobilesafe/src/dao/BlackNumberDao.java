@@ -34,7 +34,7 @@ public class BlackNumberDao {
 	// 按号码删除
 	public boolean delete(String number) {
 		SQLiteDatabase db = helper.getWritableDatabase();
-		int i = db.delete("blacknumble", "number=?", new String[] { number });
+		int i = db.delete("blacknumber", "number=?", new String[] { number });
 		if (i == 0) {
 			return false;
 		} else {
@@ -42,6 +42,10 @@ public class BlackNumberDao {
 		}
 	}
 
+	public void deleteAll() {
+		SQLiteDatabase db = helper.getWritableDatabase();
+		 db.execSQL("delete from blacknumber");
+	}
 	// 通过号码修改拦截模式
 	public boolean changNumberMode(String number, String mode) {
 		SQLiteDatabase db = helper.getWritableDatabase();
@@ -97,7 +101,7 @@ public class BlackNumberDao {
 		Cursor cursor = db.rawQuery(
 				"select number,mode from blacknumber limit ? offset ?",
 				new String[] { String.valueOf(PageSize),
-						String.valueOf(page * (PageSize - 1)) });
+						String.valueOf((page-1) * PageSize)});
 		while (cursor.moveToNext()) {
 			blackNumberInfo numberInfo = new blackNumberInfo();
 			numberInfo.setNumber(cursor.getString(0));

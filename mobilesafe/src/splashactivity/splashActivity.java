@@ -104,7 +104,7 @@ public class splashActivity extends Activity {
 			mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2000);//—”≥Ÿ2√Î∑¢ÀÕœ˚œ¢
 		}
 	AlphaAnimation anim=new AlphaAnimation(0.3f, 1f);
-	anim.setDuration(2000);
+	anim.setDuration(200);
 	rl_root.startAnimation(anim);
 	
 	}
@@ -198,8 +198,8 @@ public class splashActivity extends Activity {
 				}finally{
 					long endTime=System.currentTimeMillis();
 					long time=endTime-startTime;
-					if(time<2000){
-						long t=2000-time;
+					if(time<500){
+						long t=500-time;
 						try {
 							Thread.sleep(t);
 						} catch (InterruptedException e) {
