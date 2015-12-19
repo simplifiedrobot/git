@@ -21,7 +21,6 @@
             android:text="内存可用:xxx"
             android:textColor="#000"
             android:textSize="18sp" />
-         
 
         <TextView
             android:id="@+id/tv_sd"
@@ -35,21 +34,20 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+        android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/tv_app"
+            android:id="@+id/tv_apptop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ff888888"
-            android:text="用户程序(5)个"
+            android:background="#888888"
+            android:text="应用程序"
             android:textColor="#fff" />
+
         <include
-            android:id="@+id/list_view"
-            layout="@layout/listview_appmaneger" >
+            android:id="@+id/listview_appmaneger"
+            layout="@layout/listview_safecall" >
         </include>
     </FrameLayout>
-
-       
 
 </LinearLayout>

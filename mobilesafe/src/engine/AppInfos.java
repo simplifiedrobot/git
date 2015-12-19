@@ -43,13 +43,8 @@ public class AppInfos {
 			// apk的长度
 			long length = file.length();
 			appInfo.setApkSize(length);
-			System.out.println("---------------------------");
-			System.out.println("程序的名字:" + label);
-			System.out.println("程序的包名:" + packageName);
-			System.out.println("程序的大小:" + length);
 			// 获取到安装应用的标记
 			int flags = installedPackage.applicationInfo.flags;
-			System.out.println(flags);
 			if ((flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
 				// 表示系统app
 				appInfo.setUserApp(false);
@@ -61,6 +56,7 @@ public class AppInfos {
 			if ((flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0) {
 				// 表示在sd卡
 				appInfo.setRom(false);
+				
 			} else {
 				// 表示内存
 				appInfo.setRom(true);
