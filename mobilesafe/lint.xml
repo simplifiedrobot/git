@@ -4,4 +4,7 @@
         <ignore path="src/activity/appManeger.java" />
         <ignore path="src/activity/homeActivity.java" />
     </issue>
+    <issue id="ServiceCast">
+        <ignore path="src/dao/SystemInfoUtils.java" />
+    </issue>
 </lint>

@@ -1,45 +1,49 @@
 package bean;
 
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
 
 public class taskInfo {
-	ImageView app_icon;
-	TextView app_name;
-	Long app_memory_size;
-	boolean app_status;
-
-	public ImageView getApp_icon() {
-		return app_icon;
-	}
-
-	public void setApp_icon(ImageView app_icon) {
-		this.app_icon = app_icon;
-	}
-
-	public TextView getApp_name() {
-		return app_name;
-	}
-
-	public void setApp_name(TextView app_name) {
-		this.app_name = app_name;
-	}
-
-
-	public Long getApp_memory_size() {
-		return app_memory_size;
-	}
-
-	public void setApp_memory_size(Long app_memory_size) {
-		this.app_memory_size = app_memory_size;
-	}
-
-	public boolean isApp_status() {
-		return app_status;
-	}
-
-	public void setApp_status(boolean app_status) {
-		this.app_status = app_status;
-	}
+   Drawable icon;
+   String name;
+   Long memsize;
+   boolean userTask;
+   boolean isChecked;
+   public boolean isChecked() {
+	return isChecked;
+}
+public void setChecked(boolean isChecked) {
+	this.isChecked = isChecked;
+}
+String packageName;
+public Drawable getIcon() {
+	return icon;
+}
+public void setIcon(Drawable icon) {
+	this.icon = icon;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public Long getMemsize() {
+	return memsize;
+}
+public void setMemsize(Long memsize) {
+	this.memsize = memsize;
+}
+public boolean isUserTask() {
+	return userTask;
+}
+public void setUserTask(boolean userTask) {
+	this.userTask = userTask;
+}
+public String getPackageName() {
+	return packageName;
+}
+public void setPackageName(String packageName) {
+	this.packageName = packageName;
+}
 
 }
