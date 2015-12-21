@@ -71,7 +71,11 @@
         </activity>
         <activity android:name="activity.appManeger" >
         </activity>
-        <activity android:name="activity.activity_TaskManager" >
+        <activity android:name="activity.activity_TaskManager" 
+            >
+            <intent-filter ><action android:name="ACTION_TASK"
+                />
+            <category android:name="android.intent.category.DEFAULT"/></intent-filter>
         </activity>
         <activity
             android:name="activity.activity_drag"

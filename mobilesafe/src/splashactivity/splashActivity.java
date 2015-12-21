@@ -101,7 +101,7 @@ public class splashActivity extends Activity {
 		if(b){
 			checkVersoin();
 		}else{
-			mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2000);//ÑÓ³Ù2Ãë·¢ËÍÏûÏ¢
+			mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 200);//ÑÓ³Ù2Ãë·¢ËÍÏûÏ¢
 		}
 	AlphaAnimation anim=new AlphaAnimation(0.3f, 1f);
 	anim.setDuration(200);

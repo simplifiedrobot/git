@@ -38,6 +38,7 @@ public class kill_processService extends Service {
 	}
 	class LockReciver extends BroadcastReceiver{
 
+		
 		@Override
 		public void onReceive(Context context, Intent intent) {
 		ActivityManager am=	(ActivityManager) context.getSystemService(context.ACTIVITY_SERVICE);

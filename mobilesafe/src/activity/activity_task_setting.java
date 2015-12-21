@@ -4,9 +4,9 @@ import service.kill_processService;
 import utils.ServiceUtils;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -32,27 +32,15 @@ public class activity_task_setting extends Activity {
 	}
 
 	private void intiUI( ){
-		  boolean b=	SharedPreferencesUtils.getBoolean(this, "cb_status");
-		  
-			if(b){
-				cb_status.setChecked(true);
-			}else {
-				cb_status.setChecked(false);
-			}
-			cb_status.setOnClickListener(new OnClickListener() {
-				
+				cb_status.setChecked(SharedPreferencesUtils.getBoolean(this, "cb_status"));
+			cb_status.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				@Override
-				public void onClick(View v) {
-					if(!cb_status.isChecked()){
-						cb_status.setChecked(true);
-						SharedPreferencesUtils.putBoolean(activity_task_setting.this, "cb_status", true);
-					}else {
-						cb_status.setChecked(false);
-						SharedPreferencesUtils.putBoolean(activity_task_setting.this, "cb_status", false);
-					}
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					SharedPreferencesUtils.putBoolean(activity_task_setting.this, "cb_status", isChecked);
 				}
 			});
-			//定时清理进程
+			
+			//锁屏清理进程
 			final Intent intent=new Intent(activity_task_setting.this,kill_processService.class);
 			cb_status_kill_process.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				
@@ -70,13 +58,36 @@ public class activity_task_setting extends Activity {
 
 	@Override
 	protected void onStart() {
+		
 		// TODO Auto-generated method stub
 		super.onStart();
-		if(ServiceUtils.isServiceRunning(this,"com.example.mobilesafe.service.kill_processService")){
+		System.out.println("onstart");
+		boolean b=ServiceUtils.isServiceRunning(this,"service.kill_processService");
+	  System.out.println(b);
+		if(b){
 			cb_status_kill_process.setChecked(true);
 		}else{
 			cb_status_kill_process.setChecked(false);
 		}
 	}
+	 public void addshortcut(View v){
+			Intent intent = new Intent();
+			intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+			/**
+			 * 1  你想干什么事情
+			 * 2  叫什么名字
+			 * 3  长什么样子
+			 */
+			Intent dowhtIntent = new Intent();
+			//告诉系统哥想去进程管理
+			dowhtIntent.setAction("ACTION_TASK");
+			//叫什么名字
+			intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "进程管理");
+			//长什么样子
+			intent.putExtra(Intent.EXTRA_SHORTCUT_ICON, 
+					BitmapFactory.decodeResource(getResources(), R.drawable.home_taskmanager));
+			intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, dowhtIntent);
+			sendBroadcast(intent);
+	 }
 	}
 

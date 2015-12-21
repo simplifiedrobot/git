@@ -43,5 +43,12 @@
             android:layout_height="wrap_content"
             android:text="锁屏清理进程" />
     </LinearLayout>
+    <Button 
+          android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:onClick="addshortcut"
+            android:text="创建进程管理快捷图标"
+       
+        />
 
 </LinearLayout>

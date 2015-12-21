@@ -18,6 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import bean.taskInfo;
@@ -43,6 +44,7 @@ public class activity_TaskManager extends Activity {
 	Context context;
 	private TextView tv_task_process_count;
 	private TextView tv_task_memory;
+	private taskInfo task_info;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,27 +84,7 @@ public class activity_TaskManager extends Activity {
 				});
 			}
 		}.start();
-		list_view.setOnItemClickListener(new OnItemClickListener() {
 
-			private taskInfo task_info;
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Object atPosition = list_view.getItemAtPosition(position);
-				if (atPosition != null & atPosition instanceof taskInfo) {
-					task_info = (taskInfo) atPosition;
-					ViewHolder holder = (ViewHolder) view.getTag();
-				}
-				if (task_info.getPackageName().equals(getPackageName())) {
-					return;
-				}
-				if (task_info.isChecked()) {
-					task_info.setChecked(false);
-					holder.tv_app_status.setChecked(false);
-				}
-			}
-		});
 	}
 
 	private void initUI() {
@@ -116,6 +98,31 @@ public class activity_TaskManager extends Activity {
 				+ "/"
 				+ Formatter.formatFileSize(this,
 						SystemInfoUtils.getTotalRam(this)));
+		// list_view的点击事件
+		list_view.setOnItemClickListener(new OnItemClickListener() {
+
+			private ViewHolder holder1;
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Object atPosition = list_view.getItemAtPosition(position);
+				if (atPosition != null && atPosition instanceof taskInfo) {
+					task_info = (taskInfo) atPosition;
+					holder1 = (ViewHolder) view.getTag();
+				}
+				if (task_info.getPackageName().equals(getPackageName())) {
+					return;
+				}
+				if (task_info.isChecked()) {
+					task_info.setChecked(false);
+					holder1.tv_app_status.setChecked(false);
+				} else {
+					task_info.setChecked(true);
+					holder1.tv_app_status.setChecked(true);
+				}
+			}
+		});
 
 	}
 
@@ -136,9 +143,11 @@ public class activity_TaskManager extends Activity {
 
 		@Override
 		public Object getItem(int position) {
-			if (position == 0 || position == userappinfo.size() + 1) {
+			if (position == 0) {
 				return null;
-			} else if (position < userappinfo.size() + 1) {
+			} else if (position == userappinfo.size() + 1) {
+				return null;
+			}else if (position < userappinfo.size() + 1) {
 				return userappinfo.get(position - 1);
 			} else {
 
@@ -156,8 +165,11 @@ public class activity_TaskManager extends Activity {
 			inflate = View.inflate(activity_TaskManager.this,
 					R.layout.item_task_manager, null);
 
-			holder = null;
-			if (convertView == null) {
+			holder = new ViewHolder();
+			if (convertView != null&&convertView instanceof LinearLayout) {
+				inflate = convertView;
+				holder = (ViewHolder) inflate.getTag();
+			} else {
 				holder.iv_app_icon = (ImageView) inflate
 						.findViewById(R.id.iv_app_icon);
 				holder.tv_app_memory_size = (TextView) inflate
@@ -167,9 +179,6 @@ public class activity_TaskManager extends Activity {
 				holder.tv_app_status = (CheckBox) inflate
 						.findViewById(R.id.tv_app_status);
 				inflate.setTag(holder);
-			} else {
-				holder = (ViewHolder) convertView.getTag();
-				inflate = convertView;
 			}
 			if (position == 0) {
 				TextView textView = new TextView(activity_TaskManager.this);
@@ -218,15 +227,16 @@ public class activity_TaskManager extends Activity {
 	public void selectAll(View v) {
 
 		for (taskInfo info : userappinfo) {
-			//判断是否为自己的程序
+			// 判断是否为自己的程序
 			if (info.getPackageName().equals(getPackageName())) {
 				continue;
 			}
 			info.setChecked(true);
 		}
-		for (taskInfo info : systemappinfo) {
-			info.setChecked(true);
-
+		if(SharedPreferencesUtils.getBoolean(this, "cb_status")){
+			for (taskInfo info : systemappinfo) {
+				info.setChecked(true);
+			}
 		}
 		mydapter.notifyDataSetChanged();
 
@@ -238,62 +248,57 @@ public class activity_TaskManager extends Activity {
 			if (info.getPackageName().equals(getPackageName())) {
 				continue;
 			}
-			if (!info.isChecked()) {
-				info.setChecked(true);
-			} else {
-				info.setChecked(false);
-			}
-
+			info.setChecked(!info.isChecked());
 		}
+		if(SharedPreferencesUtils.getBoolean(this, "cb_status")){
 		for (taskInfo info : systemappinfo) {
-			if (!info.isChecked()) {
-				info.setChecked(true);
-			} else {
-				info.setChecked(false);
-			}
+			info.setChecked(!info.isChecked());
+		}
 		}
 		mydapter.notifyDataSetChanged();
 	}
 
 	public void killProcess(View v) {
 		List<taskInfo> kill_list = new ArrayList<taskInfo>();
-		int totalCount=0;//清理程序的个数
-		int killMen=0;//清理程序的大小
+		int totalCount = 0;// 清理程序的个数
+		int killMen = 0;// 清理程序的大小
 		for (taskInfo info : systemappinfo) {
 			if (info.isChecked()) {
 				kill_list.add(info);
-				totalCount+=1;
-				killMen+=info.getMemsize();
+				totalCount += 1;
+				killMen += info.getMemsize();
 			}
 		}
 		for (taskInfo info : userappinfo) {
 			if (info.isChecked()) {
 				kill_list.add(info);
-				totalCount+=1;
-				killMen+=info.getMemsize();
+				totalCount += 1;
+				killMen += info.getMemsize();
 			}
 		}
 		for (taskInfo info : kill_list) {
-			if(info.isUserTask()){
+			if (info.isUserTask()) {
 				userappinfo.remove(info);
 				SystemInfoUtils.killProcess(this, info);
-			}else{
+			} else {
 				systemappinfo.remove(info);
 				SystemInfoUtils.killProcess(this, info);
 			}
-			mToast.show(this, "共清理了"+totalCount+"个进程,释放了"+Formatter.formatFileSize(this, killMen)+"内存");
-			tv_task_process_count.setText("运行中的进程："
-					+ SystemInfoUtils.getRunningProcessCount(this) + "个");
-			tv_task_memory.setText("可用内存/总内存："
-					+ Formatter.formatFileSize(this,
-							SystemInfoUtils.getAvailRam(this)+killMen)
-					+ "/"
-					+ Formatter.formatFileSize(this,
-							SystemInfoUtils.getTotalRam(this)-killMen));
 		}
+		mToast.show(
+				this,
+				"共清理了" + totalCount + "个进程,释放了"
+						+ Formatter.formatFileSize(this, killMen) + "内存");
+		tv_task_process_count.setText("运行中的进程："
+				+ SystemInfoUtils.getRunningProcessCount(this) + "个");
+		tv_task_memory.setText("可用内存/总内存："
+				+ Formatter.formatFileSize(this,
+						SystemInfoUtils.getAvailRam(this) + killMen)
+				+ "/"
+				+ Formatter.formatFileSize(this,
+						SystemInfoUtils.getTotalRam(this) - killMen));
 		mydapter.notifyDataSetChanged();
 	}
-
 	public void openSetting(View v) {
 		Intent intent = new Intent(activity_TaskManager.this,
 				activity_task_setting.class);

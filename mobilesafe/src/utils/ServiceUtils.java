@@ -15,6 +15,7 @@ public  static boolean isServiceRunning(Context  context,String serviceName){
 	    List<RunningServiceInfo>  RunningServiceInfo =   am.getRunningServices(100);
 	          for (RunningServiceInfo runningServiceInfo2 : RunningServiceInfo) {
 	        	  String className=runningServiceInfo2.service.getClassName();
+	        	  System.out.println(className);
 				if(className.equals(serviceName)){
 					return true;
 				}
