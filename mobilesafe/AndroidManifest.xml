@@ -71,11 +71,7 @@
         </activity>
         <activity android:name="activity.appManeger" >
         </activity>
-        <activity android:name="activity.activity_TaskManager" 
-            >
-            <intent-filter ><action android:name="ACTION_TASK"
-                />
-            <category android:name="android.intent.category.DEFAULT"/></intent-filter>
+        <activity android:name="activity.activity_TaskManager" >
         </activity>
         <activity
             android:name="activity.activity_drag"
@@ -92,6 +88,21 @@
             <intent-filter android:priority="1000" >
             </intent-filter>
         </receiver>
+         <!-- 桌面小部件的配置 -->
+        <receiver android:name="receiver.MyAppWidget" >
+            <intent-filter>
+                <action android:name="APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/example_appwidget_info" />
+        </receiver>
+           <!-- 清理所有的进程 -->
+        <receiver android:name="receiver.KillProcessAllReceiver" >
+            <intent-filter>
+                <action android:name="com.itheima.mobileguard" />
+            </intent-filter>
+        </receiver>
 
         <service android:name="service.locationservice" >
         </service>
@@ -100,7 +111,11 @@
         <service android:name="service.safecall" >
         </service>
         <service android:name="service.kill_processService" >
+              </service>
+        <service android:name="service.KillProcesWidgetService" >
         </service>
+
+        
     </application>
 
     <instrumentation
