@@ -17,6 +17,9 @@ public class KillProcessAllReceiver extends BroadcastReceiver {
 		ActivityManager AM = (ActivityManager) context.getSystemService(context.ACTIVITY_SERVICE);
 		List<RunningServiceInfo> runningServices = AM.getRunningServices(100);
 		for (RunningServiceInfo runningServiceInfo : runningServices) {
+			if(runningServiceInfo.process.equals("service.MyAppWidget")){
+				continue;
+			}
 			AM.killBackgroundProcesses(runningServiceInfo.process);
 		}
 		mToast.show(context, "清理完毕，共清理了"+runningServices.size()+"个进程");

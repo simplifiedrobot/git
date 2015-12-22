@@ -20,7 +20,6 @@ public class MyAppWidget extends AppWidgetProvider {
 		 * 当前的广播的生命只有10秒
 		 *不能做耗时操作
 		 */
-		
   //启动服务
 		Intent intent = new Intent(context,KillProcesWidgetService.class);
 		context.startService(intent);
