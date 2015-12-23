@@ -95,6 +95,7 @@ public class splashActivity extends Activity {
 		te_progress = (TextView) findViewById(R.id.textView1);
 		et.setText("°æ±¾ºÅ"+getVersonName());
 		copyDB("address.db");
+		copyDB("antivirus.db");
 		rl_root = (RelativeLayout) findViewById(R.id.rl_root);
 		mPref = getSharedPreferences("config", MODE_PRIVATE);
 		boolean b = mPref.getBoolean("auto_update", true);
