@@ -23,7 +23,20 @@
         android:textSize="20sp"
         android:text="归属地查询" />
     
- 
+    
+    <TextView
+        android:id="@+id/tv_applock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="@drawable/button_zdy"
+        android:drawablePadding="10dp"
+        android:textColor="@color/black"
+        android:clickable="true"
+        android:onClick="applock"
+        android:textSize="20sp"
+        android:text="程序锁" />
+    
       
 
       

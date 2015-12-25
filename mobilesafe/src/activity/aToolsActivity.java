@@ -22,4 +22,7 @@ public class aToolsActivity extends Activity {
       public void numberAddress(View v){
     	startActivity(new Intent(this,activity_address.class));
       }
+      public void applock(View v){
+    	 	startActivity(new Intent(this,activity_app_lock.class));
+      }
 }
